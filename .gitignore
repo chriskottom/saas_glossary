@@ -1,0 +1,11 @@
+# Emacs temporary files
+*~
+\#*\#
+
+# MacOSX shit
+.DS_Store
+
+# Anything temporary
+*.old
+*.swp
+*.swo
