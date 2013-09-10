@@ -8,9 +8,10 @@ set :scm, 'none'
 set :deploy_via, :copy
 set :repository, '.'
 set :deploy_to, '/var/www/saasglossary.com'
-set :copy_exclude, %w( *~ .bundle Capfile config/ Gemfile Gemfile.lock bin/ deploy.rb vendor/ .git/ .gitignore)
+set :group_writable, true
+set :copy_exclude, %w( *~ .bundle Capfile config/ Gemfile Gemfile.lock bin/ deploy.rb vendor/ .git/ .gitignore )
 
-server 'saasglossary.com', :web, :app, :db
+server location, :web, :app, :db
 
 namespace :deploy do
   task :default do
