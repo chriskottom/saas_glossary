@@ -9,3 +9,8 @@
 *.old
 *.swp
 *.swo
+
+# Ruby- / Bundler-related (for deployments)
+.bundle
+bin/
+vendor/
