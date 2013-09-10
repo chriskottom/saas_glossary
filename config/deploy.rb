@@ -13,24 +13,32 @@ set :copy_exclude, %w( *~ .bundle Capfile config/ Gemfile Gemfile.lock bin/ depl
 server 'saasglossary.com', :web, :app, :db
 
 namespace :deploy do
-  task :migrate do
-    puts 'Skipping migrate'
+  task :default do
+    update
   end
 
   task :finalize_update do
-    puts "Skipping finalize_update."
+    escaped_release = latest_release.to_s.shellescape
+    commands = []
+    commands << "chgrp -R #{group} #{escaped_release}"
+    commands << "chmod -R -- g+w #{escaped_release}" if fetch(:group_writable, true)
+    run commands.join(' && ') if commands.any?
+  end
+
+  task :migrate do
+    puts 'deploy:migrate not implemented'
   end
 
   task :start do
-    puts "Skipping start."
+    puts 'deploy:start not implemented'
   end
 
   task :stop do 
-    puts "Skipping stop."
+    puts 'deploy:stop not implemented'
   end
 
   task :restart do
-    puts "Skipping restart."
+    puts 'deploy:restart not implemented'
   end
 end
 
